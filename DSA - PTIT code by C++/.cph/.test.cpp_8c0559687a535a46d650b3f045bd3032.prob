@@ -1,0 +1,1 @@
+{"name":"Local: test","url":"d:\\C++\\test.cpp","tests":[{"id":1697628847716,"input":"4\nBui Thai Sy\nNguyen Thanh Cong\nPham Mai Linh\nMinh Anh","output":".h.c.v.n.c.n.b.c.v.t"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\C++\\test.cpp","group":"local","local":true}
