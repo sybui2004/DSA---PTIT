@@ -3,7 +3,9 @@ DSA02006 - DAY CON TONG BANG K
 */
 #include <bits/stdc++.h>
 using namespace std;
-#define fast ios_base::sync_with_stdio(false);cin.tie(0);
+#define fast                          \
+	ios_base::sync_with_stdio(false); \
+	cin.tie(0);
 #define pb push_back
 #define ll long long
 #define FORU(i, a, b) for (int i = a; i < b; i++)
@@ -14,27 +16,28 @@ using namespace std;
 #define vl vector<ll>
 #define pi pair<int, int>
 #define reset(a) memset(a, 0, sizeof(a))
-#define mii map <int, int> 
+#define mii map<int, int>
 #define all(v) v.begin(), v.end()
 
 ll mod = 1e9 + 7;
 
 int n, k;
 vi a;
-vector < vi> ans;
+vector<vi> ans;
 
-void Try (int i, int k, vi res)
+void Try(int i, int k, vi res)
 {
 	if (k == 0)
 	{
 		ans.push_back(res);
 		return;
 	}
-	if (k < 0 || i >= n) return;
+	if (k < 0 || i >= n)
+		return;
 	vi tmp = res;
 	tmp.pb(a[i]);
-	Try (i+1, k - a[i], tmp);
-	Try (i+1, k, res);
+	Try(i + 1, k - a[i], tmp);
+	Try(i + 1, k, res);
 }
 
 void solve()
@@ -42,8 +45,9 @@ void solve()
 	ans.clear();
 	cin >> n >> k;
 	a.resize(n);
-	
-	for (int &i: a) cin >> i;
+
+	for (int &i : a)
+		cin >> i;
 
 	sort(all(a));
 	vi res;
@@ -56,11 +60,12 @@ void solve()
 		return;
 	}
 
-	for (auto i: ans)
+	for (auto i : ans)
 	{
 		cout << "[";
-		FORU (j, 0, i.size() - 1) cout << i[j] << " ";
-		cout << i[i.size() -1] << "] ";
+		FORU(j, 0, i.size() - 1)
+			cout << i[j] << " ";
+		cout << i[i.size() - 1] << "] ";
 	}
 	cout << "\n";
 }

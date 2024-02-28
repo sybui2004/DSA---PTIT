@@ -1,0 +1,63 @@
+/*Author: Bùi Thái Sỹ B22DCCN702 from ProPTIT with love
+DSA07010 - BIEN DOI TIEN TO - HAU TO
+*/
+#include <bits/stdc++.h>
+using namespace std;
+#define fast                          \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(0);
+#define pb push_back
+#define ll long long
+#define FORU(i, a, b) for (int i = a; i < b; i++)
+#define FORD(i, a, b) for (int i = a; i >= b; i--)
+#define X first
+#define Y second
+#define vi vector<int>
+#define vl vector<ll>
+#define pi pair<int, int>
+#define reset(a) memset(a, 0, sizeof(a))
+#define mii map<int, int>
+#define all(v) v.begin(), v.end()
+
+ll MOD = 1e9 + 7;
+
+void solve()
+{
+    string s;
+    cin >> s;
+    stack<string> st;
+    int n = s.size();
+
+    FORD(i, n - 1, 0)
+    {
+        if (s[i] != '+' && s[i] != '-' && s[i] != '*' && s[i] != '/')
+        {
+            string tmp = "";
+            tmp += s[i];
+            st.push(tmp);
+        }
+        else
+        {
+            string x = st.top();
+            st.pop();
+            string y = st.top();
+            st.pop();
+            string res = x + y + s[i];
+            st.push(res);
+        }
+    }
+
+    cout << st.top() << "\n";
+}
+
+int main()
+{
+    fast;
+    int t = 1;
+    cin >> t;
+
+    while (t--)
+    {
+        solve();
+    }
+}

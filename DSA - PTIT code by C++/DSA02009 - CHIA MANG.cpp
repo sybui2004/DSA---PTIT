@@ -3,7 +3,9 @@ DSA02009 - CHIA MANG
 */
 #include <bits/stdc++.h>
 using namespace std;
-#define fast ios_base::sync_with_stdio(false);cin.tie(0);
+#define fast                          \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(0);
 #define pb push_back
 #define ll long long
 #define FORU(i, a, b) for (int i = a; i < b; i++)
@@ -24,7 +26,8 @@ int A[25], visited[25];
 
 void Try(int cnt, int sum)
 {
-    if (sum > s || kt) return;
+    if (sum > s || kt)
+        return;
 
     if (cnt == k)
     {
@@ -32,13 +35,15 @@ void Try(int cnt, int sum)
         return;
     }
 
-    FORU (i, 0, n)
+    FORU(i, 0, n)
     {
         if (!visited[i])
         {
             visited[i] = 1;
-            if (sum == s) Try(cnt + 1, 0);
-            else if (sum < s) Try(cnt, sum + A[i]);
+            if (sum == s)
+                Try(cnt + 1, 0);
+            else if (sum < s)
+                Try(cnt, sum + A[i]);
         }
         visited[i] = 0;
     }
@@ -51,7 +56,7 @@ void solve()
     s = 0;
     kt = 0;
 
-    FORU (i, 0, n)
+    FORU(i, 0, n)
     {
         cin >> A[i];
         s += A[i];
@@ -64,10 +69,9 @@ void solve()
     }
 
     s /= k;
-    Try (0, 0);
+    Try(0, 0);
 
     cout << kt << "\n";
-
 }
 
 int main()

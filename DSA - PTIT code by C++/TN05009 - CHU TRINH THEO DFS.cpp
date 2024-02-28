@@ -3,7 +3,9 @@ TN05009 - CHU TRINH THEO DFS
 */
 #include <bits/stdc++.h>
 using namespace std;
-#define fast ios_base::sync_with_stdio(false);cin.tie(0);
+#define fast                          \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(0);
 #define pb push_back
 #define ll long long
 #define FORU(i, a, b) for (int i = a; i < b; i++)
@@ -26,24 +28,26 @@ int visited[1005];
 
 void DFS(int u, vi cur, int par)
 {
-	if (ans.size() > 1) return;
-	visited[u] = 1;
-	for (int x : adj[u])
+    if (ans.size() > 1)
+        return;
+    visited[u] = 1;
+    for (int x : adj[u])
     {
-		if (!visited[x])
+        if (!visited[x])
         {
             cur.pb(x);
             DFS(x, cur, u);
             cur.pop_back();
         }
-		else if (x != par && x == 1)
+        else if (x != par && x == 1)
             ans = cur;
-	}
+    }
 }
 
 void solve()
 {
-    FORU (i, 1, 1005) adj[i].clear();
+    FORU(i, 1, 1005)
+    adj[i].clear();
     int v, e;
     cin >> v >> e;
     FORU(i, 0, e)
@@ -53,17 +57,20 @@ void solve()
         adj[x].pb(y);
         adj[y].pb(x);
     }
-    
+
     ans.clear();
     reset(visited);
-    FORU (i, 1, v+1) sort(all(adj[i]));
+    FORU(i, 1, v + 1)
+    sort(all(adj[i]));
     ans.pb(1);
     DFS(1, {1}, 0);
 
-    if (ans.size() == 1) cout << "NO";
+    if (ans.size() == 1)
+        cout << "NO";
     else
     {
-        for (int i : ans) cout << i << " ";
+        for (int i : ans)
+            cout << i << " ";
         cout << "1";
     }
 

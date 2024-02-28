@@ -3,7 +3,10 @@ DSA11002 - CAY BIEU THUC 2
 */
 #include <bits/stdc++.h>
 using namespace std;
-#define fast ios_base::sync_with_stdio(false);cin.tie(0);cout.tie(0);
+#define fast                          \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(0);                       \
+    cout.tie(0);
 #define pb push_back
 #define ll long long
 #define FORU(i, a, b) for (int i = a; i < b; i++)
@@ -20,24 +23,30 @@ using namespace std;
 ll MOD = 1e9 + 7;
 int cal(int a, int b, string c)
 {
-    if (c == "+") return a + b;
-    if (c == "-") return a - b;
-    if (c == "*") return a * b;
-    if (c == "/") return a / b;
+    if (c == "+")
+        return a + b;
+    if (c == "-")
+        return a - b;
+    if (c == "*")
+        return a * b;
+    if (c == "/")
+        return a / b;
 }
-void solve ()
+void solve()
 {
     int n;
     cin >> n;
     string s;
-    stack <string> dau;
-    queue <int> so;
-    stack <int> st;
+    stack<string> dau;
+    queue<int> so;
+    stack<int> st;
     while (n--)
     {
         cin >> s;
-        if (s == "+" || s == "-" || s == "*" || s == "/") dau.push(s);
-        else st.push(stoi(s));
+        if (s == "+" || s == "-" || s == "*" || s == "/")
+            dau.push(s);
+        else
+            st.push(stoi(s));
     }
 
     while (!st.empty())
@@ -45,16 +54,18 @@ void solve ()
         so.push(st.top());
         st.pop();
     }
-    
-    queue <int> tmp;
+
+    queue<int> tmp;
 
     while (1)
     {
-        tmp = queue <int> {};
+        tmp = queue<int>{};
         while (so.size() > 1)
         {
-            int top1 = so.front(); so.pop();
-            int top2 = so.front(); so.pop();
+            int top1 = so.front();
+            so.pop();
+            int top2 = so.front();
+            so.pop();
             tmp.push(cal(top2, top1, dau.top()));
             dau.pop();
         }
@@ -64,7 +75,8 @@ void solve ()
             cout << tmp.front() << "\n";
             return;
         }
-        else so = tmp;
+        else
+            so = tmp;
     }
 }
 

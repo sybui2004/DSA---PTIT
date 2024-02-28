@@ -3,7 +3,9 @@ DSA11017 - DUYET CAY NHI PHAN TIM KIEM 1
 */
 #include <bits/stdc++.h>
 using namespace std;
-#define fast ios_base::sync_with_stdio(false);cin.tie(0);
+#define fast                          \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(0);
 #define pb push_back
 #define ll long long
 #define FORU(i, a, b) for (int i = a; i < b; i++)
@@ -14,64 +16,69 @@ using namespace std;
 #define vl vector<ll>
 #define pi pair<int, int>
 #define reset(a) memset(a, 0, sizeof(a))
-#define mii map <int, int> 
+#define mii map<int, int>
 #define all(v) v.begin(), v.end()
-#define tree node*
+#define tree node *
 ll MOD = 1e9 + 7;
 
-struct node {
-	int data;
-	node *left, *right;
+struct node
+{
+    int data;
+    node *left, *right;
 };
 
 tree createNode(int data)
 {
     tree newNode = new node;
-    newNode -> data = data;
-    newNode -> left = newNode -> right = NULL;
+    newNode->data = data;
+    newNode->left = newNode->right = NULL;
     return newNode;
 }
 
 void buildTree(tree &T, int data)
 {
-    if(!T) T = createNode(data);
-    else if (T -> data > data) buildTree(T -> left, data);
-    else if (T -> data <= data) buildTree(T -> right, data);
+    if (!T)
+        T = createNode(data);
+    else if (T->data > data)
+        buildTree(T->left, data);
+    else if (T->data <= data)
+        buildTree(T->right, data);
 }
 
 void order(tree T)
 {
-	if (T->left) order(T->left);
-	if (T->right) order(T->right);
-    cout << T -> data << " ";
+    if (T->left)
+        order(T->left);
+    if (T->right)
+        order(T->right);
+    cout << T->data << " ";
 }
 
 void solve()
 {
-	int n;
+    int n;
     cin >> n;
     tree T = NULL;
 
-    FORU (i, 0, n)
+    FORU(i, 0, n)
     {
         int x;
         cin >> x;
         buildTree(T, x);
     }
-    
+
     order(T);
     cout << "\n";
 }
 
-
 int main()
 {
-	fast;
-	int t = 1;
-	cin >> t;
+    fast;
+    int t = 1;
+    cin >> t;
 
-	while (t--)
-	{
-		solve();
-	}
+    while (t--)
+    {
+        solve();
+    }
 }

@@ -3,7 +3,10 @@ DSA10017 - CHU TRINH AM
 */
 #include <bits/stdc++.h>
 using namespace std;
-#define fast ios_base::sync_with_stdio(false);cin.tie(0);cout.tie(0);
+#define fast                          \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(0);                       \
+    cout.tie(0);
 #define pb push_back
 #define ll long long
 #define FORU(i, a, b) for (int i = a; i < b; i++)
@@ -20,13 +23,13 @@ using namespace std;
 ll MOD = 1e9 + 7;
 
 int v, e;
-vector <vi > edge;
+vector<vi> edge;
 int visited[1005];
-map <pi, int> mp;
+map<pi, int> mp;
 
 bool bfs(int u)
 {
-    queue <pi> q;
+    queue<pi> q;
     q.push({u, 0});
     visited[u] = 1;
 
@@ -40,35 +43,36 @@ bool bfs(int u)
             {
                 visited[v] = 1;
                 q.push(front);
-				q.push({v, front.Y + mp[{front.X, v}]});
+                q.push({v, front.Y + mp[{front.X, v}]});
             }
-            else if (v == u && front.Y + mp[{front.X, v}] < 0) return true;
+            else if (v == u && front.Y + mp[{front.X, v}] < 0)
+                return true;
         }
     }
 
     return false;
 }
 
-void solve ()
+void solve()
 {
-	cin >> v >> e;
-	edge.clear();
-	edge.resize(v+1);
+    cin >> v >> e;
+    edge.clear();
+    edge.resize(v + 1);
     mp.clear();
 
-	int a, b, c;
+    int a, b, c;
 
-	FORU (i, 0, e)
-	{
-		cin >> a >> b >> c;
-		edge[a].push_back(b);
+    FORU(i, 0, e)
+    {
+        cin >> a >> b >> c;
+        edge[a].push_back(b);
         mp[{a, b}] = c;
-	}
+    }
 
-    FORU (i, 1, v+1)
+    FORU(i, 1, v + 1)
     {
         reset(visited);
-        if (bfs(i)) 
+        if (bfs(i))
         {
             cout << "1\n";
             return;

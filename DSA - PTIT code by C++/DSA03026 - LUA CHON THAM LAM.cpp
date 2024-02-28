@@ -1,0 +1,94 @@
+/*Author: Bùi Thái Sỹ B22DCCN702 from ProPTIT with love
+DSA03026 - LUA CHON THAM LAM
+*/
+#include <bits/stdc++.h>
+using namespace std;
+#define fast                          \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(0);
+#define pb push_back
+#define ll long long
+#define FORU(i, a, b) for (int i = a; i < b; i++)
+#define FORD(i, a, b) for (int i = a; i >= b; i--)
+#define X first
+#define Y second
+#define vi vector<int>
+#define vl vector<ll>
+#define pi pair<int, int>
+#define reset(a) memset(a, 0, sizeof(a))
+#define mii map<int, int>
+#define all(v) v.begin(), v.end()
+
+ll mod = 1e9 + 7;
+
+int s, d;
+
+void solve()
+{
+    cin >> d >> s;
+
+    if (d * 9 < s || (s == 0 && d > 1))
+    {
+        cout << "-1 -1\n";
+        return;
+    }
+
+    string ans = "";
+
+    while (s > 9 && d > 1)
+    {
+        s -= 9;
+        d--;
+        ans += '9';
+    }
+    int s1 = s, d1 = d;
+    // so nho nhat
+    if (s <= 9 && d > 1)
+    {
+        string res = "";
+        d--;
+        res += "1";
+        s--;
+        int tmp = d - 1;
+
+        while (tmp--)
+            res += '0';
+
+        res += to_string(s);
+
+        cout << res + ans << " ";
+    }
+    else if (s <= 9 && d == 1)
+    {
+        cout << to_string(s) + ans << " ";
+    }
+    // so lon nhat
+    if (s1 <= 9 && d1 > 1)
+    {
+        string res = to_string(s1);
+        d1--;
+        int tmp = d1;
+
+        while (tmp--)
+            res += '0';
+
+        cout << ans + res << " ";
+    }
+    else if (s1 <= 9 && d1 == 1)
+    {
+        ans += to_string(s1);
+        cout << ans << " ";
+    }
+}
+
+int main()
+{
+    fast;
+    int t = 1;
+    // cin >> t;
+
+    while (t--)
+    {
+        solve();
+    }
+}

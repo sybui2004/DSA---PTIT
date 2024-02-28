@@ -3,7 +3,9 @@ DSA10005 - CHU TRINH EULER TRONG DO THI CO HUONG
 */
 #include <bits/stdc++.h>
 using namespace std;
-#define fast ios_base::sync_with_stdio(false);cin.tie(0);
+#define fast                          \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(0);
 #define pb push_back
 #define ll long long
 #define FORU(i, a, b) for (int i = a; i < b; i++)
@@ -14,17 +16,17 @@ using namespace std;
 #define vl vector<ll>
 #define pi pair<int, int>
 #define reset(a) memset(a, 0, sizeof(a))
-#define mii map <int, int> 
+#define mii map<int, int>
 #define all(v) v.begin(), v.end()
 
 ll MOD = 1e9 + 7;
 
-void solve ()
+void solve()
 {
-	mii m1, m2;
+    mii m1, m2;
     int v, e;
     cin >> v >> e;
-    FORU (i, 0, e)
+    FORU(i, 0, e)
     {
         int x, y;
         cin >> x >> y;
@@ -46,15 +48,14 @@ void solve ()
     cout << "1\n";
 }
 
-
 int main()
 {
-	fast;
-	int t = 1;
-	cin >> t;
+    fast;
+    int t = 1;
+    cin >> t;
 
-	while (t--)
-	{
-		solve();
-	}
+    while (t--)
+    {
+        solve();
+    }
 }

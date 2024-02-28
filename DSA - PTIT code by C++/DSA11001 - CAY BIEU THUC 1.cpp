@@ -3,7 +3,10 @@ DSA11001 - CAY BIEU THUC 1
 */
 #include <bits/stdc++.h>
 using namespace std;
-#define fast ios_base::sync_with_stdio(false);cin.tie(0);cout.tie(0);
+#define fast                          \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(0);                       \
+    cout.tie(0);
 #define pb push_back
 #define ll long long
 #define FORU(i, a, b) for (int i = a; i < b; i++)
@@ -19,15 +22,16 @@ using namespace std;
 
 ll MOD = 1e9 + 7;
 
-void solve ()
+void solve()
 {
-	string s;
+    string s;
     cin >> s;
-    stack <string> st;
+    stack<string> st;
 
     for (char i : s)
     {
-        if (i >= 'a' && i <= 'z') st.push(string(1, i));
+        if (i >= 'a' && i <= 'z')
+            st.push(string(1, i));
         else
         {
             string a = st.top();

@@ -3,7 +3,9 @@ DSA07011 - BIEN DOI HAU TO - TIEN TO
 */
 #include <bits/stdc++.h>
 using namespace std;
-#define fast ios_base::sync_with_stdio(false); cin.tie(0);
+#define fast                          \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(0);
 #define pb push_back
 #define ll long long
 #define FORU(i, a, b) for (int i = a; i < b; i++)
@@ -23,11 +25,12 @@ void solve()
 {
     string s;
     cin >> s;
-    stack <string> st;
+    stack<string> st;
 
     for (char i : s)
     {
-        if ((i >= 'A' && i <= 'Z') || (i >= 'a' && i <= 'z')) st.push(string(1, i));
+        if ((i >= 'A' && i <= 'Z') || (i >= 'a' && i <= 'z'))
+            st.push(string(1, i));
         else
         {
             string a = st.top();

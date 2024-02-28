@@ -3,7 +3,9 @@ DSA10015 - KRUSKAL
 */
 #include <bits/stdc++.h>
 using namespace std;
-#define fast ios_base::sync_with_stdio(false);cin.tie(0);
+#define fast                          \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(0);
 #define pb push_back
 #define ll long long
 #define FORU(i, a, b) for (int i = a; i < b; i++)
@@ -26,12 +28,13 @@ struct edge
     int u, v, w;
 };
 
-vector <edge> adj;
+vector<edge> adj;
 int par[105], size[105];
 
 int find(int v)
 {
-    if (v == par[v]) return v;
+    if (v == par[v])
+        return v;
     return par[v] = find(par[v]);
 }
 
@@ -39,27 +42,30 @@ int Union(int a, int b)
 {
     a = find(a);
     b = find(b);
-    if (a == b) return 0;
-    if (size[a] < size[b]) swap(a, b);  
+    if (a == b)
+        return 0;
+    if (size[a] < size[b])
+        swap(a, b);
     par[b] = a;
     size[a] += size[b];
     return true;
 }
 
-int cmp (edge a, edge b)
+int cmp(edge a, edge b)
 {
     return a.w < b.w;
 }
 
 void KRUSKAL()
 {
-    vector <edge> mst;
+    vector<edge> mst;
     int d = 0;
     sort(all(adj), cmp);
-    
-    FORU (i, 0, e) 
+
+    FORU(i, 0, e)
     {
-        if (mst.size() == v-1) break;
+        if (mst.size() == v - 1)
+            break;
         edge tmp = adj[i];
         if (Union(tmp.u, tmp.v))
         {
@@ -79,13 +85,13 @@ void solve()
     reset(size);
     adj.clear();
 
-    FORU (i, 1, v+1) 
+    FORU(i, 1, v + 1)
     {
         par[i] = i;
         size[i] = 1;
     }
-    
-    FORU (i, 0, e)
+
+    FORU(i, 0, e)
     {
         int x, y, w;
         cin >> x >> y >> w;

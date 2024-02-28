@@ -3,7 +3,10 @@ DSA06045 - XAU TOT
 */
 #include <bits/stdc++.h>
 using namespace std;
-#define fast ios_base::sync_with_stdio(false);cin.tie(0);cout.tie(0);
+#define fast                          \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(0);                       \
+    cout.tie(0);
 #define pb push_back
 #define ll long long
 #define FORU(i, a, b) for (int i = a; i < b; i++)
@@ -23,20 +26,21 @@ ll MOD = 1e9 + 7;
 // Xâu xấu là xâu tạo bởi 1 kí tự A và x kí tự B sau đó hoặc là 1 kí tự B và x kí tự A sau đó
 // Số xâu xấu = same[i] + same[i+1] - 1
 // Nếu same[i] = 1 || same[i+1] = 1 thì số xâu xấu bằng max (same[i], same[i+1])
-// Nếu same[i] != 1 và same[i+1] != 1 thì tồn tại 1 xâu tốt được tại nên từ min(same[i], same[i+1]) kí tự A và min(same[i], same[i+1]) kí tự B 
+// Nếu same[i] != 1 và same[i+1] != 1 thì tồn tại 1 xâu tốt được tại nên từ min(same[i], same[i+1]) kí tự A và min(same[i], same[i+1]) kí tự B
 // nên số xâu xấu là same[i] + same[i+1] - 1
-void solve ()
+void solve()
 {
     int n;
-	string s;
-	cin >> n >> s;
-	vector <int> same;
+    string s;
+    cin >> n >> s;
+    vector<int> same;
     int l = 1;
 
     // các xâu con liên tiếp giống nhau
-    FORU (i, 1, n)
+    FORU(i, 1, n)
     {
-        if (s[i] == s[i-1]) l++;
+        if (s[i] == s[i - 1])
+            l++;
         else
         {
             same.pb(l);
@@ -48,20 +52,22 @@ void solve ()
 
     ll cur = 0;
 
-    FORU (i, 0, same.size() - 1)
+    FORU(i, 0, same.size() - 1)
     {
-        if (same[i] == 1 || same[i+1] == 1) cur += max (same[i], same[i+1]);
-        else cur += same[i] + same[i+1] - 1;
+        if (same[i] == 1 || same[i + 1] == 1)
+            cur += max(same[i], same[i + 1]);
+        else
+            cur += same[i] + same[i + 1] - 1;
     }
 
-	cout << 1ll*n*(n-1)/2 - cur << "\n";
+    cout << 1ll * n * (n - 1) / 2 - cur << "\n";
 }
 
 int main()
 {
     fast;
     int t = 1;
-    //cin >> t;
+    // cin >> t;
 
     while (t--)
     {

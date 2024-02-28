@@ -3,7 +3,9 @@ DSA10011 - DI CHUYEN TREN BANG SO
 */
 #include <bits/stdc++.h>
 using namespace std;
-#define fast ios_base::sync_with_stdio(false);cin.tie(0);
+#define fast                          \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(0);
 #define pb push_back
 #define ll long long
 #define FORU(i, a, b) for (int i = a; i < b; i++)
@@ -20,34 +22,35 @@ using namespace std;
 ll MOD = 1e9 + 7;
 
 int n, m, A[505][505];
-pi gotoXY[4] = {{-1,0}, {0,-1}, {1,0}, {0,1}};
-map <pi, int> mp;
+pi gotoXY[4] = {{-1, 0}, {0, -1}, {1, 0}, {0, 1}};
+map<pi, int> mp;
 
-class Compare{
+class Compare
+{
 public:
-    bool operator()(pair <pi, int> a, pair <pi, int> b)
+    bool operator()(pair<pi, int> a, pair<pi, int> b)
     {
-        return a.Y > b.Y;  
+        return a.Y > b.Y;
     }
 };
 
 void DIJKSTRA()
 {
-	priority_queue < pair<pi, int> , vector <pair<pi, int>>, Compare> pq;
-	pq.push({{1, 1}, A[1][1]});
+    priority_queue<pair<pi, int>, vector<pair<pi, int>>, Compare> pq;
+    pq.push({{1, 1}, A[1][1]});
 
-	while (!pq.empty())
+    while (!pq.empty())
     {
-		auto top = pq.top();
+        auto top = pq.top();
 
         if (top.X.X == n && top.X.Y == m)
         {
             cout << top.Y << "\n";
             return;
         }
-		pq.pop();
+        pq.pop();
 
-		FORU (i, 0, 4)
+        FORU(i, 0, 4)
         {
             auto tmp = top;
             tmp.X.X += gotoXY[i].X;
@@ -57,17 +60,17 @@ void DIJKSTRA()
                 pq.push({{tmp.X.X, tmp.X.Y}, tmp.Y + A[tmp.X.X][tmp.X.Y]});
                 mp[{tmp.X.X, tmp.X.Y}] = 1;
             }
-                
         }
-	}
+    }
 }
 void solve()
 {
     mp.clear();
     cin >> n >> m;
-    FORU (i, 1, n+1)
-        FORU (j, 1, m+1) cin >> A[i][j];
-    
+    FORU(i, 1, n + 1)
+    FORU(j, 1, m + 1)
+        cin >> A[i][j];
+
     DIJKSTRA();
 }
 

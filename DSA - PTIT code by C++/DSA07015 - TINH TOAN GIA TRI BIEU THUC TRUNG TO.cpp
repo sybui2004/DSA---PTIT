@@ -3,7 +3,9 @@ DSA07015 - TINH TOAN GIA TRI BIEU THUC TRUNG TO
 */
 #include <bits/stdc++.h>
 using namespace std;
-#define fast ios_base::sync_with_stdio(false);cin.tie(0);
+#define fast                          \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(0);
 #define pb push_back
 #define ll long long
 #define FORU(i, a, b) for (int i = a; i < b; i++)
@@ -21,41 +23,52 @@ ll mod = 1e9 + 7;
 
 string s;
 
-ll calc (ll a, ll b, char c)
+ll calc(ll a, ll b, char c)
 {
-    if (c == '+') return a + b;
-    if (c == '-') return a - b;
-    if (c == '*') return a * b;
-    if (c == '/') return a / b;
+    if (c == '+')
+        return a + b;
+    if (c == '-')
+        return a - b;
+    if (c == '*')
+        return a * b;
+    if (c == '/')
+        return a / b;
 }
 
-int check (char c)
+int check(char c)
 {
-    if(c == '*' || c == '/') return 2;
-    if(c == '+' || c == '-') return 1;
+    if (c == '*' || c == '/')
+        return 2;
+    if (c == '+' || c == '-')
+        return 1;
     return 0;
 }
 
 void solve()
 {
     cin >> s;
-    stack <ll> dig;
-    stack <char> st;
+    stack<ll> dig;
+    stack<char> st;
 
-    FORU (i, 0, s.size())
+    FORU(i, 0, s.size())
     {
-        if (s[i] == '(') st.push(s[i]);
+        if (s[i] == '(')
+            st.push(s[i]);
         else if (s[i] == ')')
         {
             while (!st.empty() && st.top() != '(')
             {
-                ll cur1 = dig.top(); dig.pop();
-                ll cur2 = dig.top(); dig.pop();
-                char dau = st.top(); st.pop();
+                ll cur1 = dig.top();
+                dig.pop();
+                ll cur2 = dig.top();
+                dig.pop();
+                char dau = st.top();
+                st.pop();
                 dig.push(calc(cur2, cur1, dau));
             }
 
-            if (!st.empty()) st.pop();
+            if (!st.empty())
+                st.pop();
         }
         else if (isdigit(s[i]))
         {
@@ -70,14 +83,17 @@ void solve()
             dig.push(cur);
             i--;
         }
-        
+
         else
         {
             while (!st.empty() && check(st.top()) >= check(s[i]))
             {
-                ll cur1 = dig.top(); dig.pop();
-                ll cur2 = dig.top(); dig.pop();
-                char dau = st.top(); st.pop();
+                ll cur1 = dig.top();
+                dig.pop();
+                ll cur2 = dig.top();
+                dig.pop();
+                char dau = st.top();
+                st.pop();
                 dig.push(calc(cur2, cur1, dau));
             }
 
@@ -87,9 +103,12 @@ void solve()
 
     while (!st.empty())
     {
-        ll cur1 = dig.top(); dig.pop();
-        ll cur2 = dig.top(); dig.pop();
-        char dau = st.top(); st.pop();
+        ll cur1 = dig.top();
+        dig.pop();
+        ll cur2 = dig.top();
+        dig.pop();
+        char dau = st.top();
+        st.pop();
         dig.push(calc(cur2, cur1, dau));
     }
 

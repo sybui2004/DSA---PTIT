@@ -25,7 +25,7 @@ void solve()
 {
     string s;
     cin >> s;
-    stack <char> l, r;
+    stack<char> l, r;
 
     for (char i : s)
     {
@@ -50,12 +50,13 @@ void solve()
             if (!l.empty())
                 l.pop();
         }
-        else l.push(i);
+        else
+            l.push(i);
     }
 
     string ans = "";
 
-    while(!l.empty())
+    while (!l.empty())
     {
         ans += l.top();
         l.pop();
@@ -63,12 +64,12 @@ void solve()
 
     reverse(all(ans));
 
-    while(!r.empty())
+    while (!r.empty())
     {
         ans += r.top();
         r.pop();
     }
-    
+
     cout << ans;
 }
 

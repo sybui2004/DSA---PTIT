@@ -3,8 +3,10 @@ DSA03033 - ATM THE HE MOI
 */
 #include <bits/stdc++.h>
 using namespace std;
-#define fast ios_base::sync_with_stdio(false);cin.tie(0);
-#define pb push_back		
+#define fast                          \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(0);
+#define pb push_back
 #define ll long long
 #define FORU(i, a, b) for (int i = a; i < b; i++)
 #define FORD(i, a, b) for (int i = a; i >= b; i--)
@@ -14,7 +16,7 @@ using namespace std;
 #define vl vector<ll>
 #define pi pair<int, int>
 #define reset(a) memset(a, 0, sizeof(a))
-#define mii map <int, int> 
+#define mii map<int, int>
 #define all(v) v.begin(), v.end()
 
 ll MOD = 1e9 + 7;
@@ -26,40 +28,41 @@ vl mon;
 
 void init()
 {
-	int x = c;
-	while (x > -1)
-	{
-		FORU (i, 0, 4) mon.pb(a[i] * pow (10, x));
-		x--;
-	}
+    int x = c;
+    while (x > -1)
+    {
+        FORU(i, 0, 4)
+        mon.pb(a[i] * pow(10, x));
+        x--;
+    }
 }
 
 void solve()
 {
-	mon.clear();
+    mon.clear();
     cin >> w >> c;
 
-    if (w % 1000) 
+    if (w % 1000)
     {
         cout << "0\n";
         return;
     }
 
     init();
-    vector <pair <ll, ll>> res;
+    vector<pair<ll, ll>> res;
 
     ll cnt1 = 0, cnt2 = 1;
 
     for (ll i : mon)
     {
-        res.pb({i, w/i});
-        cnt1 += w/i;
+        res.pb({i, w / i});
+        cnt1 += w / i;
         w %= i;
     }
 
-    FORD (i, c, 0)
+    FORD(i, c, 0)
     {
-        vector <pair <ll, ll>> ans;
+        vector<pair<ll, ll>> ans;
 
         for (auto x : res)
         {
@@ -71,11 +74,14 @@ void solve()
 
         for (auto x : ans)
         {
-            if (x.X == m || x.X == p) b = min(b, x.Y);
-            if (x.X == n || x.X == p) c = min(c, x.Y);
+            if (x.X == m || x.X == p)
+                b = min(b, x.Y);
+            if (x.X == n || x.X == p)
+                c = min(c, x.Y);
         }
 
-        if (b + c >= 1) cnt2 *= (b + c + 1);
+        if (b + c >= 1)
+            cnt2 *= (b + c + 1);
     }
 
     cout << cnt1 << " " << cnt2 << "\n";
@@ -83,12 +89,12 @@ void solve()
 
 int main()
 {
-	fast;
-	int t = 1;
-	cin >> t;
+    fast;
+    int t = 1;
+    cin >> t;
 
-	while (t--)
-	{
-		solve();
-	}
+    while (t--)
+    {
+        solve();
+    }
 }

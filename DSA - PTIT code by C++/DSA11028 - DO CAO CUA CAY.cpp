@@ -3,7 +3,9 @@ DSA11028 - DO CAO CUA CAY
 */
 #include <bits/stdc++.h>
 using namespace std;
-#define fast ios_base::sync_with_stdio(false);cin.tie(0);
+#define fast                          \
+	ios_base::sync_with_stdio(false); \
+	cin.tie(0);
 #define pb push_back
 #define ll long long
 #define FORU(i, a, b) for (int i = a; i < b; i++)
@@ -14,7 +16,7 @@ using namespace std;
 #define vl vector<ll>
 #define pi pair<int, int>
 #define reset(a) memset(a, 0, sizeof(a))
-#define mii map <int, int> 
+#define mii map<int, int>
 #define all(v) v.begin(), v.end()
 
 ll MOD = 1e9 + 7;
@@ -27,29 +29,30 @@ void DFS(int u, int deep)
 {
 	visited[u] = 1;
 	ans = max(ans, deep);
-	for (int v : edge[u])	
-		if (!visited[v]) DFS(v, deep + 1);
+	for (int v : edge[u])
+		if (!visited[v])
+			DFS(v, deep + 1);
 }
 
 void solve()
 {
 	cin >> n;
 	ans = 0;
-	FORU (i, 1, 100005) edge[i].clear();
+	FORU(i, 1, 100005)
+	edge[i].clear();
 	reset(visited);
 	n--;
 
 	while (n--)
 	{
 		int x, y;
-        cin >> x >> y;
+		cin >> x >> y;
 		edge[x].pb(y);
 	}
 
 	DFS(1, 0);
 	cout << ans << "\n";
 }
-
 
 int main()
 {

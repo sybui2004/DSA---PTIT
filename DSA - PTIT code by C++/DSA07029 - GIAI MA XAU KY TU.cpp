@@ -3,8 +3,10 @@ DSA07029 - GIAI MA XAU KY TU
 */
 #include <bits/stdc++.h>
 using namespace std;
-#define fast ios_base::sync_with_stdio(false);cin.tie(0);
-#define pb push_back		
+#define fast                          \
+	ios_base::sync_with_stdio(false); \
+	cin.tie(0);
+#define pb push_back
 #define ll long long
 #define FORU(i, a, b) for (int i = a; i < b; i++)
 #define FORD(i, a, b) for (int i = a; i >= b; i--)
@@ -14,31 +16,32 @@ using namespace std;
 #define vl vector<ll>
 #define pi pair<int, int>
 #define reset(a) memset(a, 0, sizeof(a))
-#define mii map <int, int> 
+#define mii map<int, int>
 #define all(v) v.begin(), v.end()
 
 ll MOD = 1e9 + 7;
 
 string change(string s, int dem)
 {
-    string res = "";
-    FORU (i, 0, dem) res += s;
-    return res;
+	string res = "";
+	FORU(i, 0, dem)
+	res += s;
+	return res;
 }
 
 void solve()
 {
-    string s;
-    cin >> s;
-    stack <char> st;
+	string s;
+	cin >> s;
+	stack<char> st;
 
-    for (char i : s)
-    {
-        if (i != ']')
-        {
-            st.push(i);
-            continue;
-        }
+	for (char i : s)
+	{
+		if (i != ']')
+		{
+			st.push(i);
+			continue;
+		}
 
 		string cnt = "", tmp = "";
 
@@ -55,23 +58,25 @@ void solve()
 			cnt = st.top() + cnt;
 			st.pop();
 		}
-		
+
 		int dem = 1;
-		if(!cnt.empty()) dem = stoi(cnt);
+		if (!cnt.empty())
+			dem = stoi(cnt);
 		tmp = change(tmp, dem);
 
-		for (char j : tmp) st.push(j);
-    }
+		for (char j : tmp)
+			st.push(j);
+	}
 
-    string res = "";
+	string res = "";
 
-    while (!st.empty())
-    {
-        res = st.top() + res;
-        st.pop();
-    }
+	while (!st.empty())
+	{
+		res = st.top() + res;
+		st.pop();
+	}
 
-    cout << res << "\n";
+	cout << res << "\n";
 }
 
 int main()

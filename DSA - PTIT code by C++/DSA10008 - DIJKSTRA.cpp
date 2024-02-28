@@ -3,7 +3,9 @@ DSA10008 - DIJKSTRA
 */
 #include <bits/stdc++.h>
 using namespace std;
-#define fast ios_base::sync_with_stdio(false);cin.tie(0);
+#define fast                          \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(0);
 #define pb push_back
 #define ll long long
 #define FORU(i, a, b) for (int i = a; i < b; i++)
@@ -20,35 +22,37 @@ using namespace std;
 ll MOD = 1e9 + 7;
 
 int v, e, u;
-vector <pi> adj[1005];
+vector<pi> adj[1005];
 
 void DIJKSTRA(int u)
 {
     vi d(v + 1, 1e9);
-	d[u] = 0;
-	priority_queue < pi, vector <pi>, greater <pi> > pq;
-	pq.push({0, u});
+    d[u] = 0;
+    priority_queue<pi, vector<pi>, greater<pi>> pq;
+    pq.push({0, u});
 
-	while (!pq.empty())
+    while (!pq.empty())
     {
-		pi top = pq.top();
-		pq.pop();
-		for (pi x : adj[top.Y])
+        pi top = pq.top();
+        pq.pop();
+        for (pi x : adj[top.Y])
         {
-			if (d[x.X] > x.Y + d[top.Y])
+            if (d[x.X] > x.Y + d[top.Y])
             {
-				d[x.X] = x.Y + d[top.Y];
-				pq.push({d[x.X], x.X});
-			}
-		}
-	}
+                d[x.X] = x.Y + d[top.Y];
+                pq.push({d[x.X], x.X});
+            }
+        }
+    }
 
-	FORU(i, 1, v + 1) cout << d[i] << " ";
-	cout << "\n";
+    FORU(i, 1, v + 1)
+        cout << d[i] << " ";
+    cout << "\n";
 }
 void solve()
 {
-    FORU (i, 1, 1005) adj[i].clear();
+    FORU(i, 1, 1005)
+    adj[i].clear();
     cin >> v >> e >> u;
 
     while (e--)

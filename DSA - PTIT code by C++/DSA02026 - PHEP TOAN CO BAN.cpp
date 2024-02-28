@@ -3,7 +3,9 @@ DSA02026 - PHEP TOAN CO BAN
 */
 #include <bits/stdc++.h>
 using namespace std;
-#define fast ios_base::sync_with_stdio(false);cin.tie(0);
+#define fast                          \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(0);
 #define pb push_back
 #define ll long long
 #define FORU(i, a, b) for (int i = a; i < b; i++)
@@ -14,9 +16,9 @@ using namespace std;
 #define vl vector<ll>
 #define pi pair<int, int>
 #define reset(a) memset(a, 0, sizeof(a))
-#define mii map <int, int> 
+#define mii map<int, int>
 #define all(v) v.begin(), v.end()
-#define tree node*
+#define tree node *
 ll MOD = 1e9 + 7;
 
 string ans;
@@ -26,19 +28,23 @@ int ktra(string s)
 {
     int a = (s[0] - '0') * 10 + (s[1] - '0'), b = (s[5] - '0') * 10 + (s[6] - '0');
     int sum = 0;
-    if (s[3] == '+') sum = a + b;
-    else sum = a - b;
-    if (sum == (s[10] - '0') * 10 + (s[11] - '0')) return 1;
+    if (s[3] == '+')
+        sum = a + b;
+    else
+        sum = a - b;
+    if (sum == (s[10] - '0') * 10 + (s[11] - '0'))
+        return 1;
     return 0;
 }
 
 void Try(int i, string s)
 {
-    if(kt) return;
+    if (kt)
+        return;
 
-    if(i == s.size())
+    if (i == s.size())
     {
-        if(ktra(s))
+        if (ktra(s))
         {
             ans = s;
             kt = 1;
@@ -46,16 +52,16 @@ void Try(int i, string s)
         return;
     }
 
-    if (s [i] == '?')
+    if (s[i] == '?')
     {
-        if(i == 3)
+        if (i == 3)
         {
             s[i] = '+';
             Try(i + 1, s);
             s[i] = '-';
             Try(i + 1, s);
         }
-        else if(i == 0 || i == 5 || i == 10)
+        else if (i == 0 || i == 5 || i == 10)
         {
             for (char j = '1'; j <= '9'; j++)
             {
@@ -64,15 +70,16 @@ void Try(int i, string s)
             }
         }
         else if (i == 1 || i == 6 || i == 11)
-        {   
-            for(char j = '0'; j <= '9'; j++)
+        {
+            for (char j = '0'; j <= '9'; j++)
             {
                 s[i] = j;
                 Try(i + 1, s);
             }
         }
     }
-    else Try(i + 1, s);
+    else
+        Try(i + 1, s);
 }
 void solve()
 {
@@ -87,20 +94,22 @@ void solve()
 
     kt = 0;
     ans = "";
-    Try (0, s);
+    Try(0, s);
 
-    if (ans.size()) cout << ans << "\n";
-    else cout << "WRONG PROBLEM!\n";
+    if (ans.size())
+        cout << ans << "\n";
+    else
+        cout << "WRONG PROBLEM!\n";
 }
 int main()
 {
-	fast;
-	int t = 1;
-	cin >> t;
+    fast;
+    int t = 1;
+    cin >> t;
     cin.ignore();
 
-	while (t--)
-	{
-		solve();
-	}
+    while (t--)
+    {
+        solve();
+    }
 }

@@ -3,7 +3,10 @@ DSA07005 - BIEU THUC TUONG DUONG
 */
 #include <bits/stdc++.h>
 using namespace std;
-#define fast ios_base::sync_with_stdio(false);cin.tie(0);cout.tie(0);
+#define fast                          \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(0);                       \
+    cout.tie(0);
 #define pb push_back
 #define ll long long
 #define FORU(i, a, b) for (int i = a; i < b; i++)
@@ -23,16 +26,17 @@ void solve()
 {
     string s;
     cin >> s;
-    stack <char> st;
-    
+    stack<char> st;
+
     for (char i : s)
     {
-        if (i != ')') st.push(i);
+        if (i != ')')
+            st.push(i);
         else
         {
-            stack <char> tmp;
+            stack<char> tmp;
 
-            while(!st.empty() && st.top() != '(')
+            while (!st.empty() && st.top() != '(')
             {
                 tmp.push(st.top());
                 st.pop();
@@ -44,9 +48,12 @@ void solve()
             {
                 while (!tmp.empty())
                 {
-                    if (tmp.top() == '+') st.push('-');
-                    else if (tmp.top() == '-') st.push('+');
-                    else st.push(tmp.top());
+                    if (tmp.top() == '+')
+                        st.push('-');
+                    else if (tmp.top() == '-')
+                        st.push('+');
+                    else
+                        st.push(tmp.top());
                     tmp.pop();
                 }
             }
@@ -68,7 +75,7 @@ void solve()
         ans += st.top();
         st.pop();
     }
-    
+
     reverse(all(ans));
 
     cout << ans << "\n";

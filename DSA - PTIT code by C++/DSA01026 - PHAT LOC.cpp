@@ -3,7 +3,9 @@ DSA01026 - PHAT LOC
 */
 #include <bits/stdc++.h>
 using namespace std;
-#define fast ios_base::sync_with_stdio(false);cin.tie(0);
+#define fast                          \
+	ios_base::sync_with_stdio(false); \
+	cin.tie(0);
 #define pb push_back
 #define ll long long
 #define FORU(i, a, b) for (int i = a; i < b; i++)
@@ -14,40 +16,45 @@ using namespace std;
 #define vl vector<ll>
 #define pi pair<int, int>
 #define reset(a) memset(a, 0, sizeof(a))
-#define mii map <int, int> 
+#define mii map<int, int>
 #define all(v) v.begin(), v.end()
 
 ll mod = 1e9 + 7;
 
 int n;
 string s;
-vector <string> res;
+vector<string> res;
 int kt(string s, string val)
 {
 	for (int i = 4; i <= n; i++)
 	{
 		val += '6';
-		if (s.find(val) != -1) return 0;
+		if (s.find(val) != -1)
+			return 0;
 	}
 	return 1;
 }
 
-void check ()
+void check()
 {
-	string  val = "666";
-    if (s[0] == '8' && s[n - 1] == '6' && s.find("88") == -1  && kt(s, val)) 
-        res.push_back(s);
+	string val = "666";
+	if (s[0] == '8' && s[n - 1] == '6' && s.find("88") == -1 && kt(s, val))
+		res.push_back(s);
 }
 
 void Try(int i)
 {
-    for (int j = 0; j <= 1; j++)
+	for (int j = 0; j <= 1; j++)
 	{
-        if (j == 0) s[i] = '8';
-        else s[i] = '6';
-        if (i == n -1) check();
-        else Try(i + 1);
-    }
+		if (j == 0)
+			s[i] = '8';
+		else
+			s[i] = '6';
+		if (i == n - 1)
+			check();
+		else
+			Try(i + 1);
+	}
 }
 
 void solve()
@@ -57,9 +64,10 @@ void solve()
 	res.clear();
 	Try(0);
 
-	sort (all(res));
-	
-	for (string i : res) cout << i << "\n";
+	sort(all(res));
+
+	for (string i : res)
+		cout << i << "\n";
 }
 
 int main()
@@ -67,7 +75,7 @@ int main()
 
 	fast;
 	int t = 1;
-	//cin >> t;
+	// cin >> t;
 
 	while (t--)
 	{

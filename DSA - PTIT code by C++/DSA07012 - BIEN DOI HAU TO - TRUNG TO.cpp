@@ -3,7 +3,9 @@ DSA07012 - BIEN DOI HAU TO - TRUNG TO
 */
 #include <bits/stdc++.h>
 using namespace std;
-#define fast ios_base::sync_with_stdio(false); cin.tie(0);
+#define fast                          \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(0);
 #define pb push_back
 #define ll long long
 #define FORU(i, a, b) for (int i = a; i < b; i++)
@@ -23,7 +25,7 @@ void solve()
 {
     string s;
     cin >> s;
-    stack <string> st;
+    stack<string> st;
 
     for (char i : s)
     {

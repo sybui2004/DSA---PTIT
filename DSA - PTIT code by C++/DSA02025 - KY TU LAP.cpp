@@ -3,7 +3,10 @@ DSA02025 - KY TU LAP
 */
 #include <bits/stdc++.h>
 using namespace std;
-#define fast ios_base::sync_with_stdio(false);cin.tie(0);cout.tie(0);
+#define fast                          \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(0);                       \
+    cout.tie(0);
 #define pb push_back
 #define ll long long
 #define FORU(i, a, b) for (int i = a; i < b; i++)
@@ -26,26 +29,29 @@ string a[15];
 int cnt(string a, string b)
 {
     int dp[300] = {}, dem = 0;
-    for (char i: a) dp[i]++;
-    for (char i: b) dem += dp[i];
+    for (char i : a)
+        dp[i]++;
+    for (char i : b)
+        dem += dp[i];
     return dem;
 }
 
-void Try (int x)
+void Try(int x)
 {
-    FORU (i, 1, n+1)
+    FORU(i, 1, n + 1)
     {
         if (!visited[i])
         {
             trace[x] = i;
             visited[i] = true;
-            cur += cnt(a[trace[x-1]], a[i]);
+            cur += cnt(a[trace[x - 1]], a[i]);
 
-            if (x == n) ans = min(ans, cur);
+            if (x == n)
+                ans = min(ans, cur);
             else if (x < n && cur < ans)
                 Try(x + 1);
             visited[i] = false;
-            cur -=  cnt(a[trace[x-1]], a[i]);
+            cur -= cnt(a[trace[x - 1]], a[i]);
         }
     }
 }
@@ -54,9 +60,10 @@ void solve()
 {
     cin >> n;
 
-    FORU (i, 1, n+1) cin >> a[i];
+    FORU(i, 1, n + 1)
+        cin >> a[i];
 
-    Try (1);
+    Try(1);
     cout << ans << "\n";
 }
 
@@ -64,7 +71,7 @@ int main()
 {
     fast;
     int t = 1;
-    //cin >> t;
+    // cin >> t;
     while (t--)
     {
         solve();

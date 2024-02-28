@@ -3,7 +3,9 @@ DSA02015 - LOAI BO DAU NGOAC
 */
 #include <bits/stdc++.h>
 using namespace std;
-#define fast ios_base::sync_with_stdio(false);cin.tie(0);
+#define fast                          \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(0);
 #define pb push_back
 #define ll long long
 #define FORU(i, a, b) for (int i = a; i < b; i++)
@@ -19,25 +21,29 @@ using namespace std;
 
 ll mod = 1e9 + 7;
 
-set <string> se;
+set<string> se;
 
 int ktra(string s)
 {
-    if (s == "") return 0;
-	int open = 0, close = 0;
+    if (s == "")
+        return 0;
+    int open = 0, close = 0;
 
-	for (char i: s)
+    for (char i : s)
     {
-		if (i == '(')
+        if (i == '(')
         {
             open++;
-		}
-		if (i == ')') close++;
-		if (close > open) return 0;
-	}
+        }
+        if (i == ')')
+            close++;
+        if (close > open)
+            return 0;
+    }
 
-	if (open == 0 && close == 0 && s.size() == 1) return 0;
-	return (open == close);
+    if (open == 0 && close == 0 && s.size() == 1)
+        return 0;
+    return (open == close);
 }
 
 void solve()
@@ -51,39 +57,38 @@ void solve()
         return;
     }
 
-    unordered_map <string, int> mp;
-	queue <string> q;
-	mp[s] = 1;
-	q.push(s);
-	int kt = 0;
-	while (!q.empty())
+    unordered_map<string, int> mp;
+    queue<string> q;
+    mp[s] = 1;
+    q.push(s);
+    int kt = 0;
+    while (!q.empty())
     {
-		string front = q.front();
-		q.pop();
+        string front = q.front();
+        q.pop();
 
-		if (ktra(front))
+        if (ktra(front))
         {
-			se.insert(front);
-			kt = 1;
-		}
+            se.insert(front);
+            kt = 1;
+        }
 
-        if (kt) continue;
-        
-		FORU (i, 0, front.size())
+        if (kt)
+            continue;
+
+        FORU(i, 0, front.size())
         {
-			if (front[i] == '(' || front[i] == ')')
+            if (front[i] == '(' || front[i] == ')')
             {
-				string cur = front.substr(0, i) + front.substr(i + 1, front.size());
-				if (!mp[cur])
+                string cur = front.substr(0, i) + front.substr(i + 1, front.size());
+                if (!mp[cur])
                 {
-					mp[cur] = 1;
-					q.push(cur);
-				}
-			}
-
-		}
-
-	}
+                    mp[cur] = 1;
+                    q.push(cur);
+                }
+            }
+        }
+    }
 
     if (se.empty())
     {
@@ -91,7 +96,8 @@ void solve()
         return;
     }
 
-    for (auto s : se) cout << s << " ";
+    for (auto s : se)
+        cout << s << " ";
     cout << "\n";
 }
 

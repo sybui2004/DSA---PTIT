@@ -3,7 +3,9 @@ DSA08014 - GIEO MAM
 */
 #include <bits/stdc++.h>
 using namespace std;
-#define fast ios_base::sync_with_stdio(false);cin.tie(0);
+#define fast                          \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(0);
 #define pb push_back
 #define ll long long
 #define FORU(i, a, b) for (int i = a; i < b; i++)
@@ -14,7 +16,7 @@ using namespace std;
 #define vl vector<ll>
 #define pi pair<int, int>
 #define reset(a) memset(a, 0, sizeof(a))
-#define mii map <int, int> 
+#define mii map<int, int>
 #define all(v) v.begin(), v.end()
 
 ll MOD = 1e9 + 7;
@@ -28,31 +30,32 @@ void BFS()
 {
     int dd[505][505], cnt = 0;
     reset(dd);
-    queue <pi> q;
+    queue<pi> q;
 
-    FORU (i, 1, r+1)
-        FORU (j, 1, c+1)
+    FORU(i, 1, r + 1)
+    FORU(j, 1, c + 1)
+    {
+        if (A[i][j] == 1)
+            cnt++;
+        else if (A[i][j] == 2)
         {
-            if (A[i][j] == 1) cnt++;
-            else if (A[i][j] == 2)
-            {
-                dd[i][j] = 1;
-                q.push({i, j});
-            }
+            dd[i][j] = 1;
+            q.push({i, j});
         }
+    }
 
-
-    if(!cnt)
+    if (!cnt)
     {
         cout << "0\n";
         return;
     }
 
-    while(!q.empty())
+    while (!q.empty())
     {
-        pi front = q.front(); q.pop();
-    
-        FORU (i, 0, 4)
+        pi front = q.front();
+        q.pop();
+
+        FORU(i, 0, 4)
         {
             int x = front.X + posX[i];
             int y = front.Y + posY[i];
@@ -61,12 +64,12 @@ void BFS()
                 A[x][y] = 2;
                 cnt--;
 
-                if (!cnt) 
+                if (!cnt)
                 {
                     cout << dd[front.X][front.Y] << "\n";
                     return;
                 }
-                
+
                 dd[x][y] = dd[front.X][front.Y] + 1;
                 q.push({x, y});
             }
@@ -76,25 +79,24 @@ void BFS()
     cout << "-1\n";
 }
 
-void solve ()
+void solve()
 {
     cin >> r >> c;
-    FORU (i, 1, r + 1)
-        FORU (j, 1, c+1)
-            cin >> A[i][j];
-    
+    FORU(i, 1, r + 1)
+    FORU(j, 1, c + 1)
+    cin >> A[i][j];
+
     BFS();
 }
 
-
 int main()
 {
-	fast;
-	int t = 1;
-	cin >> t;
+    fast;
+    int t = 1;
+    cin >> t;
 
-	while (t--)
-	{
-		solve();
-	}
+    while (t--)
+    {
+        solve();
+    }
 }

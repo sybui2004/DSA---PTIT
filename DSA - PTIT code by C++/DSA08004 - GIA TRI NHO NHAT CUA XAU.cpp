@@ -3,7 +3,9 @@ DSA08004 - GIA TRI NHO NHAT CUA XAU
 */
 #include <bits/stdc++.h>
 using namespace std;
-#define fast ios_base::sync_with_stdio(false);cin.tie(0);
+#define fast                          \
+	ios_base::sync_with_stdio(false); \
+	cin.tie(0);
 #define pb push_back
 #define ll long long
 #define FORU(i, a, b) for (int i = a; i < b; i++)
@@ -14,7 +16,7 @@ using namespace std;
 #define vl vector<ll>
 #define pi pair<int, int>
 #define reset(a) memset(a, 0, sizeof(a))
-#define mii map <int, int> 
+#define mii map<int, int>
 #define all(v) v.begin(), v.end()
 
 ll MOD = 1e9 + 7;
@@ -25,13 +27,15 @@ void solve()
 	string s;
 	cin >> k >> s;
 
-	map <int, ll> m;
+	map<int, ll> m;
 
-	for (char i : s) m[i - '0']++;
+	for (char i : s)
+		m[i - '0']++;
 
-	priority_queue <ll> pq;
+	priority_queue<ll> pq;
 
-	for (auto i : m) pq.push(i.Y);
+	for (auto i : m)
+		pq.push(i.Y);
 
 	while (k--)
 	{

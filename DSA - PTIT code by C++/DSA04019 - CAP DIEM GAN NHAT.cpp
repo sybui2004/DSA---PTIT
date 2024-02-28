@@ -3,7 +3,9 @@ DSA04019 - CAP DIEM GAN NHAT
 */
 #include <bits/stdc++.h>
 using namespace std;
-#define fast ios_base::sync_with_stdio(false);cin.tie(0);
+#define fast                          \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(0);
 #define pb push_back
 #define ll long long
 #define FORU(i, a, b) for (int i = a; i < b; i++)
@@ -14,23 +16,23 @@ using namespace std;
 #define vl vector<ll>
 #define pi pair<int, int>
 #define reset(a) memset(a, 0, sizeof(a))
-#define mii map <int, int> 
+#define mii map<int, int>
 #define all(v) v.begin(), v.end()
-#define tree node*
+#define tree node *
 ll MOD = 1e9 + 7;
 
-double distance(pair <double, double> a, pair <double, double> b)
+double distance(pair<double, double> a, pair<double, double> b)
 {
     return sqrt(pow((a.X - b.X), 2) + pow((a.Y - b.Y), 2));
 }
 
 void solve()
 {
-	int n;
+    int n;
     cin >> n;
-    vector <pair <double, double> > a(n), b(n);
+    vector<pair<double, double>> a(n), b(n);
 
-    FORU (i, 0, n)
+    FORU(i, 0, n)
     {
         cin >> a[i].X >> a[i].Y;
         b[i].X = a[i].Y;
@@ -41,20 +43,20 @@ void solve()
     sort(all(b));
     double ans = 1e9;
 
-    FORU (i, 0, n-1) ans = min(ans, min(distance(a[i], a[i+1]), distance(b[i], b[i+1])));
+    FORU(i, 0, n - 1)
+    ans = min(ans, min(distance(a[i], a[i + 1]), distance(b[i], b[i + 1])));
 
     cout << setprecision(6) << fixed << ans << "\n";
 }
 
-
 int main()
 {
-	fast;
-	int t = 1;
-	cin >> t;
+    fast;
+    int t = 1;
+    cin >> t;
 
-	while (t--)
-	{
-		solve();
-	}
+    while (t--)
+    {
+        solve();
+    }
 }

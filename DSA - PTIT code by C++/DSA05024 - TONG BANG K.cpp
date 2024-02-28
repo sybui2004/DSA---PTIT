@@ -3,7 +3,9 @@ DSA05024 - TONG BANG K
 */
 #include <bits/stdc++.h>
 using namespace std;
-#define fast ios_base::sync_with_stdio(false);cin.tie(0);
+#define fast                          \
+	ios_base::sync_with_stdio(false); \
+	cin.tie(0);
 #define pb push_back
 #define ll long long
 #define FORU(i, a, b) for (int i = a; i < b; i++)
@@ -14,7 +16,7 @@ using namespace std;
 #define vl vector<ll>
 #define pi pair<int, int>
 #define reset(a) memset(a, 0, sizeof(a))
-#define mii map <int, int> 
+#define mii map<int, int>
 #define all(v) v.begin(), v.end()
 
 ll MOD = 1e9 + 7;
@@ -26,19 +28,21 @@ void solve()
 	vi a(n);
 	vl dp(10001, 0);
 
-	for (int &i : a) cin >> i;
+	for (int &i : a)
+		cin >> i;
 	dp[0] = 1;
-	
-	FORU (i, 1, 10000)
+
+	FORU(i, 1, 10000)
 	{
 		for (int j : a)
 		{
-			if (i >= j) dp[i] = (dp[i] + dp[i-j]) % MOD;
+			if (i >= j)
+				dp[i] = (dp[i] + dp[i - j]) % MOD;
 		}
 	}
 
 	cout << dp[k] << "\n";
-} 
+}
 
 int main()
 {

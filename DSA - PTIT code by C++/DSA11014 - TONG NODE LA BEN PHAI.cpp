@@ -3,7 +3,9 @@ DSA11014 - TONG NODE LA BEN PHAI
 */
 #include <bits/stdc++.h>
 using namespace std;
-#define fast ios_base::sync_with_stdio(false);cin.tie(0);
+#define fast                          \
+	ios_base::sync_with_stdio(false); \
+	cin.tie(0);
 #define pb push_back
 #define ll long long
 #define FORU(i, a, b) for (int i = a; i < b; i++)
@@ -14,18 +16,20 @@ using namespace std;
 #define vl vector<ll>
 #define pi pair<int, int>
 #define reset(a) memset(a, 0, sizeof(a))
-#define mii map <int, int> 
+#define mii map<int, int>
 #define all(v) v.begin(), v.end()
-#define tree node*
+#define tree node *
 ll MOD = 1e9 + 7;
 
 int u, v;
 char x;
 
-struct node {
+struct node
+{
 	int data;
 	node *left, *right;
-    node(int x) {
+	node(int x)
+	{
 		this->data = x;
 		left = right = NULL;
 	}
@@ -33,8 +37,8 @@ struct node {
 
 void buildTree(tree &T, int n)
 {
-    unordered_map <int, tree>m;
-	FORU (i, 0, n)
+	unordered_map<int, tree> m;
+	FORU(i, 0, n)
 	{
 		int u, v;
 		char c;
@@ -74,26 +78,30 @@ int ans;
 
 bool isLeaf(tree T)
 {
-    return (T -> left == T -> right && T -> left == NULL);
+	return (T->left == T->right && T->left == NULL);
 }
 
 void order(tree T)
 {
-	if(!T) return;
-    if(T -> right && isLeaf(T -> right)) ans += T -> right -> data;
-    if(T -> right && !isLeaf(T -> right)) order(T -> right);
-    if(T -> left && !isLeaf(T -> left)) order(T -> left);
+	if (!T)
+		return;
+	if (T->right && isLeaf(T->right))
+		ans += T->right->data;
+	if (T->right && !isLeaf(T->right))
+		order(T->right);
+	if (T->left && !isLeaf(T->left))
+		order(T->left);
 }
 void solve()
 {
-	int n; cin >> n;
-    tree T = NULL;
-    buildTree(T, n);
-    ans = 0;
-    order(T);
-    cout << ans << "\n";
+	int n;
+	cin >> n;
+	tree T = NULL;
+	buildTree(T, n);
+	ans = 0;
+	order(T);
+	cout << ans << "\n";
 }
-
 
 int main()
 {

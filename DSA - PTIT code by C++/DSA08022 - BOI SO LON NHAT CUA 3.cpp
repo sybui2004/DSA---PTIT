@@ -3,7 +3,9 @@ DSA08022 - BOI SO LON NHAT CUA 3
 */
 #include <bits/stdc++.h>
 using namespace std;
-#define fast ios_base::sync_with_stdio(false);cin.tie(0);
+#define fast                          \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(0);
 #define pb push_back
 #define ll long long
 #define FORU(i, a, b) for (int i = a; i < b; i++)
@@ -27,13 +29,13 @@ void display()
     if (!v1.empty())
     {
         FORU(i, 0, v1.size())
-            v0.push_back(v1[i]);
+        v0.push_back(v1[i]);
     }
-        
+
     if (!v2.empty())
     {
         FORU(i, 0, v2.size())
-            v0.push_back(v2[i]);
+        v0.push_back(v2[i]);
     }
 
     sort(all(v0), greater<int>());
@@ -41,9 +43,10 @@ void display()
     if (!v0.empty() && v0[0] != 0)
     {
         FORU(i, 0, v0.size())
-            cout << v0[i];
+        cout << v0[i];
     }
-    else cout << -1;
+    else
+        cout << -1;
     cout << "\n";
 
     return;

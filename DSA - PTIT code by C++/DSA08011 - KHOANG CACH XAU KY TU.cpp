@@ -3,7 +3,9 @@ DSA08011 - KHOANG CACH XAU KY TU
 */
 #include <bits/stdc++.h>
 using namespace std;
-#define fast ios_base::sync_with_stdio(false);cin.tie(0);
+#define fast                          \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(0);
 #define pb push_back
 #define ll long long
 #define FORU(i, a, b) for (int i = a; i < b; i++)
@@ -21,11 +23,11 @@ ll MOD = 1e9 + 7;
 
 int n;
 string st, en;
-unordered_set <string> se;
+unordered_set<string> se;
 
-void BFS ()
+void BFS()
 {
-    queue <pair <string, int>> q;
+    queue<pair<string, int>> q;
     q.push({st, 1});
 
     while (!q.empty())
@@ -41,20 +43,20 @@ void BFS ()
         q.pop();
         string s = front.X;
 
-        for (char &i : s)  
+        for (char &i : s)
         {
             char tmp = i;
-			for (char j = 'A'; j <= 'Z'; j++)
+            for (char j = 'A'; j <= 'Z'; j++)
             {
-				i = j;
-				if (se.count(s))
+                i = j;
+                if (se.count(s))
                 {
-					se.erase(s);
-					q.push({s , front.Y + 1});
-				}
-			}
-			i = tmp;
-		}
+                    se.erase(s);
+                    q.push({s, front.Y + 1});
+                }
+            }
+            i = tmp;
+        }
     }
 }
 
@@ -69,7 +71,7 @@ void solve()
         se.insert(i);
     }
 
-    BFS(); 
+    BFS();
 }
 
 int main()

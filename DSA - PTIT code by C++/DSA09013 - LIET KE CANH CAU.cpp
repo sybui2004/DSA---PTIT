@@ -3,7 +3,9 @@ DSA09013 - LIET KE CANH CAU
 */
 #include <bits/stdc++.h>
 using namespace std;
-#define fast ios_base::sync_with_stdio(false);cin.tie(0);
+#define fast                          \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(0);
 #define pb push_back
 #define ll long long
 #define FORU(i, a, b) for (int i = a; i < b; i++)
@@ -14,7 +16,7 @@ using namespace std;
 #define vl vector<ll>
 #define pi pair<int, int>
 #define reset(a) memset(a, 0, sizeof(a))
-#define mii map <int, int> 
+#define mii map<int, int>
 #define all(v) v.begin(), v.end()
 
 ll MOD = 1e9 + 7;
@@ -110,29 +112,31 @@ ll MOD = 1e9 + 7;
 // 	cur = tplt();
 
 //     process();
-    
+
 //     cout << "\n";
 // }
 
 int v, e, disc[1005], low[1005], timer;
-vector <vi> adj;
-vector <pi> ans;
+vector<vi> adj;
+vector<pi> ans;
 void dfs(int u, int p)
 {
     low[u] = disc[u] = ++timer;
     for (int v : adj[u])
     {
-        if (v == p) continue;
+        if (v == p)
+            continue;
         if (!disc[v])
         {
             dfs(v, u);
             low[u] = min(low[u], low[v]);
-            if (low[v] > disc[u]) 
+            if (low[v] > disc[u])
             {
                 ans.pb({min(u, v), max(u, v)});
             }
         }
-        else low[u] = min(low[u], disc[v]);
+        else
+            low[u] = min(low[u], disc[v]);
     }
 }
 
@@ -140,9 +144,9 @@ void init()
 {
     cin >> v >> e;
     adj.clear();
-    adj.resize(v+1);
+    adj.resize(v + 1);
 
-    FORU (i, 0, e)
+    FORU(i, 0, e)
     {
         int x, y;
         cin >> x >> y;
@@ -156,28 +160,30 @@ void init()
 }
 
 void solve()
-{    
+{
     ans.clear();
 
-    FORU (i, 1, v+1) 
+    FORU(i, 1, v + 1)
     {
-        if (!disc[i]) dfs(i, -1);
+        if (!disc[i])
+            dfs(i, -1);
     }
 
     sort(all(ans));
 
-    for (pi i : ans) cout << i.X << " " << i.Y << " ";
+    for (pi i : ans)
+        cout << i.X << " " << i.Y << " ";
     cout << "\n";
 }
 int main()
 {
-	fast;
-	int t = 1;
-	cin >> t;
+    fast;
+    int t = 1;
+    cin >> t;
 
-	while (t--)
-	{
+    while (t--)
+    {
         init();
-		solve();
-	}
+        solve();
+    }
 }

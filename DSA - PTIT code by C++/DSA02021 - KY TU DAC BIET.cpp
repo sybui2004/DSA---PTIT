@@ -3,7 +3,9 @@ DSA02021 - KY TU DAC BIET
 */
 #include <bits/stdc++.h>
 using namespace std;
-#define fast ios_base::sync_with_stdio(false);cin.tie(0);
+#define fast                          \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(0);
 #define pb push_back
 #define ll long long
 #define FORU(i, a, b) for (int i = a; i < b; i++)
@@ -21,12 +23,15 @@ ll MOD = 1e9 + 7;
 
 string s;
 
-char Try (ll k, ll n)
+char Try(ll k, ll n)
 {
-    if (k < s.size()) return s[k];
-    if (k == n / 2) return Try(k - 1, n / 2);
-	else if (k < n / 2) return Try(k, n / 2);
-	return Try(k - n / 2 - 1, n / 2);
+    if (k < s.size())
+        return s[k];
+    if (k == n / 2)
+        return Try(k - 1, n / 2);
+    else if (k < n / 2)
+        return Try(k, n / 2);
+    return Try(k - n / 2 - 1, n / 2);
 }
 void solve()
 {
@@ -34,13 +39,14 @@ void solve()
     cin >> s >> k;
     k--;
     n = s.size();
-    while (n <= k) n *= 2;
-    cout << Try (k, n) << "\n";
+    while (n <= k)
+        n *= 2;
+    cout << Try(k, n) << "\n";
 }
 
 int main()
 {
-    fast;   
+    fast;
     int t = 1;
     cin >> t;
 

@@ -3,7 +3,9 @@ DSA05045 - BAI TOAN CAI TUI KHONG NGUYEN
 */
 #include <bits/stdc++.h>
 using namespace std;
-#define fast ios_base::sync_with_stdio(false);cin.tie(0);
+#define fast                          \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(0);
 #define pb push_back
 #define ll long long
 #define FORU(i, a, b) for (int i = a; i < b; i++)
@@ -19,7 +21,7 @@ using namespace std;
 
 ll mod = 1e9 + 7;
 
-bool cmp (pair <pi, double> a, pair <pi, double> b)
+bool cmp(pair<pi, double> a, pair<pi, double> b)
 {
     return a.Y > b.Y;
 }
@@ -28,29 +30,30 @@ void solve()
 {
     int n, w;
     cin >> n >> w;
-    vector <pair <pi, double> > v(n);
+    vector<pair<pi, double>> v(n);
 
-    for (auto &i : v) 
+    for (auto &i : v)
     {
         cin >> i.X.X >> i.X.Y;
-        i.Y = 1.0*i.X.X / i.X.Y;
+        i.Y = 1.0 * i.X.X / i.X.Y;
     }
 
-    sort (all(v), cmp);
+    sort(all(v), cmp);
     double ans = 0;
     int height = 0, pos = 0;
 
-    FORU (i, 0, n)
+    FORU(i, 0, n)
     {
         if (height <= w)
         {
             height += v[i].X.Y;
-            ans += v[i].X.X;    
+            ans += v[i].X.X;
             pos = i;
         }
     }
 
-    if (height > w) ans -= v[pos].Y * (height - w);
+    if (height > w)
+        ans -= v[pos].Y * (height - w);
 
     cout << setprecision(2) << fixed << ans << "\n";
 }

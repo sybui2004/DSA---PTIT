@@ -3,7 +3,10 @@ DSA10007 - CAY KHUNG CUA DO THI THEO THUAT TOAN BFS
 */
 #include <bits/stdc++.h>
 using namespace std;
-#define fast ios_base::sync_with_stdio(false);cin.tie(0);cout.tie(0);
+#define fast                          \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(0);                       \
+    cout.tie(0);
 #define pb push_back
 #define ll long long
 #define FORU(i, a, b) for (int i = a; i < b; i++)
@@ -20,40 +23,40 @@ using namespace std;
 ll MOD = 1e9 + 7;
 
 int v, e, u;
-vector <vi> edge;
+vector<vi> edge;
 int visited[1005];
-vector <pi> ans;
+vector<pi> ans;
 
-void BFS (int u)
+void BFS(int u)
 {
-	visited[u] = 1;
-	queue <int> q;
-	q.push(u);
-	while (!q.empty())
+    visited[u] = 1;
+    queue<int> q;
+    q.push(u);
+    while (!q.empty())
     {
-		int front = q.front();
-		q.pop();
-		for (int x : edge[front])
+        int front = q.front();
+        q.pop();
+        for (int x : edge[front])
         {
-			if (!visited[x])
+            if (!visited[x])
             {
-				ans.push_back({front, x});
-				q.push(x);
-				visited[x] = 1;
-			}
-		}
-	}
+                ans.push_back({front, x});
+                q.push(x);
+                visited[x] = 1;
+            }
+        }
+    }
 }
 
-void solve ()
+void solve()
 {
-	cin >> v >> e >> u;
-	edge.clear();
-	edge.resize(v+1);
+    cin >> v >> e >> u;
+    edge.clear();
+    edge.resize(v + 1);
     reset(visited);
     ans.clear();
 
-    while(e--)
+    while (e--)
     {
         int a, b;
         cin >> a >> b;
@@ -65,9 +68,11 @@ void solve ()
 
     if (ans.size() == v - 1)
     {
-        for (pi i : ans) cout << i.X << " " << i.Y << "\n";
+        for (pi i : ans)
+            cout << i.X << " " << i.Y << "\n";
     }
-    else cout << "-1\n";
+    else
+        cout << "-1\n";
 }
 
 int main()
