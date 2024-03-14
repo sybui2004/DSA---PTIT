@@ -21,18 +21,21 @@ using namespace std;
 
 ll MOD = 1e9 + 7;
 
-void solve()
+int n;
+vi a(10005, 1e9);
+void process()
 {
-    int n;
-    cin >> n;
-    vi a(n + 1, 1e9);
     a[0] = 0;
-    FORU(i, 1, n + 1)
+    FORU(i, 1, 10005)
     {
         for (int j = 1; j <= sqrt(i); j++)
             if (a[i - j * j] != 1e9)
                 a[i] = min(a[i], a[i - j * j] + 1);
     }
+}
+void solve()
+{
+    cin >> n;
     cout << a[n] << "\n";
 }
 
@@ -41,7 +44,7 @@ int main()
     fast;
     int t = 1;
     cin >> t;
-
+    process();
     while (t--)
     {
         solve();

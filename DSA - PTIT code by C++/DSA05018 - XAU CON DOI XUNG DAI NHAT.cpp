@@ -3,9 +3,7 @@ DSA05018 - XAU CON DOI XUNG DAI NHAT
 */
 #include <bits/stdc++.h>
 using namespace std;
-#define fast                          \
-    ios_base::sync_with_stdio(false); \
-    cin.tie(0);
+#define fast ios_base::sync_with_stdio(false);cin.tie(0);
 #define pb push_back
 #define ll long long
 #define FORU(i, a, b) for (int i = a; i < b; i++)
@@ -16,60 +14,44 @@ using namespace std;
 #define vl vector<ll>
 #define pi pair<int, int>
 #define reset(a) memset(a, 0, sizeof(a))
-#define mii map<int, int>
+#define mii map <int, int> 
 #define all(v) v.begin(), v.end()
 
 ll MOD = 1e9 + 7;
 
 void solve()
 {
-    string s;
+	string s;
     cin >> s;
-    int n = s.size(), ans = 1, l, r;
-    // xau doi xung chan
-    FORU(i, 0, n)
-    {
-        l = r = i;
-        while (l >= 0 && r < n)
-        {
-            if (s[l] == s[r])
-            {
-                ans = max(ans, r - l + 1);
-                l--;
-                r++;
-            }
-            else
-                break;
-        }
-    }
-    // xau doi xung le
-    FORU(i, 0, n - 1)
-    {
-        l = i, r = i + 1;
-        while (l >= 0 && r < n)
-        {
-            if (s[l] == s[r])
-            {
-                ans = max(ans, r - l + 1);
-                l--;
-                r++;
-            }
-            else
-                break;
-        }
-    }
+    int n = s.size(), ans = -1e9;
+	vector<vi> dp(n + 1, vi(n + 1, 0));
 
-    cout << ans << "\n";
-}
+	for (int i = n-1; i >= 0; i--)
+	{
+		for (int j = i; j <= n-1; j++)
+		{
+			if(i == j) dp[i][j] = 1;
+			else if (s[i] == s[j]) 
+			{
+				if(i+1 == j) dp[i][j] = 2;
+				else if (dp[i+1][j-1]) dp[i][j] = dp[i+1][j-1] + 2;
+			}
+			ans = max(ans, dp[i][j]);
+		}
+	}
+
+	cout << ans << "\n";
+    
+} 
 
 int main()
 {
-    fast;
-    int t = 1;
-    cin >> t;
+	fast;
+	int t = 1;
+	cin >> t;
 
-    while (t--)
-    {
-        solve();
-    }
+	while (t--)
+	{
+		solve();
+	}
 }
