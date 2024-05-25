@@ -23,11 +23,12 @@ using namespace std;
 ll MOD = 1e9 + 7;
 
 // Idea: Lấy tổng số xâu con có độ dài > 1 của s trừ đi số xâu con xấu của s
-// Xâu xấu là xâu tạo bởi 1 kí tự A và x kí tự B sau đó hoặc là 1 kí tự B và x kí tự A sau đó
-// Số xâu xấu = same[i] + same[i+1] - 1
+// Xâu xấu là xâu tạo bởi 1 kí tự A và x kí tự B sau đó hoặc là x kí tự B và 1 kí tự A sau đó, hoặc ngược lại
 // Nếu same[i] = 1 || same[i+1] = 1 thì số xâu xấu bằng max (same[i], same[i+1])
-// Nếu same[i] != 1 và same[i+1] != 1 thì tồn tại 1 xâu tốt được tại nên từ min(same[i], same[i+1]) kí tự A và min(same[i], same[i+1]) kí tự B
-// nên số xâu xấu là same[i] + same[i+1] - 1
+// Nếu same[i] != 1 và same[i+1] != 1 thì số xâu xấu là same[i] + same[i+1] - 1
+// VD: AAAABBB 
+// AAAAB, AAAB, AAB, AB, ABBB, ABB, AB lặp lại 1 xâu AB nên nó là 4 + 3 - 1 = 6
+
 void solve()
 {
     int n;
